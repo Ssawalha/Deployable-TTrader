@@ -14,7 +14,7 @@ def home():
 def create_account():
     if not request.json:
         return jsonify({'error':'bad request'}), 400
-    if 'username' not in request.json or 'password' not in request.json or 'first' not in request.json or 'last' not in request.json:
+    if 'username' not in request.json or 'password' not in request.json or 'first_name' not in request.json or 'last_name' not in request.json:
         return jsonify({'error':'bad request'}), 400
     username = request.json['username']
     password = request.json['password']
