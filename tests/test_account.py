@@ -184,4 +184,4 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"balance": balance})
 
-##############  how do i clean the positions table if a user has 0 of that stock (useless rows)
+##############  how do i clean the positions table if a user has 0 of that stock (useless rows) #from sell function

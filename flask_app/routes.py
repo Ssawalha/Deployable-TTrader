@@ -61,7 +61,7 @@ def get_trades(api_key):
     api_login_attempt = Account.api_authenticate(api_key)
     if api_login_attempt != None:
         trades = api_login_attempt.get_trades()
-        return jsonify({"trades":[trade.json() for trade in trades]}) #should i remove pk from response?
+        return jsonify({"trades":[trade.json() for trade in trades]}) #should i remove pk from response? YES
     else:
         return jsonify({"error":"404"})
 

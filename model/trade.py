@@ -29,7 +29,7 @@ class Trade(ORM):
                 shares INTEGER,
                 time FLOAT,
                 FOREIGN KEY(username) REFERENCES accounts(username)
-                );''' #add NOT NULLs to ticker, shares, price, and time.
+                );''' #add NOT NULLs to ticker, shares, price, and time. #not necessary to specify memory size for inputs
 
     def __init__(self, **kwargs):
         self.values = OrderedDict()
