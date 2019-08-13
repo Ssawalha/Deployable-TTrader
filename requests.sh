@@ -23,4 +23,7 @@ echo 'buy_stock {"tsla":1}'
 curl -X POST -H 'content-type: application/json' -d '{"ticker":"tsla","shares":3}' 127.0.0.1:5000/api/12345678912345678902/buy
 
 echo 'create_account'
-curl -X POST -H 'content-type: application/json' -d '{"username":"ttrader_test1", "password":"1234", "first_name":"sami", "last_name":""}' 127.0.0.1:5000/api/create_account
+curl -X POST -H 'content-type: application/json' -d '{"username":"h", "password":"1234", "first_name":"h", "last_name":"h"}' 127.0.0.1:5000/api/create_account
+
+echo 'api_key'
+curl -X POST -H 'content-type: application/json' -d '{"username":"sami", "password":"1234"}' 127.0.0.1:5000/api/get_api_key

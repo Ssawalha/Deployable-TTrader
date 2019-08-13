@@ -20,9 +20,12 @@ def hash_password(password): #add saltedpw to db (same column), lookup salt in d
 def check_password(username, password):
     user = a.Account()
     user_info = user.one_from_where_clause('WHERE username = ?', (username,))
-    hashed_pw = (user_info.values['password_hash'])
-    password = password.encode()
-    return bcrypt.checkpw(password, hashed_pw) #returns True or False
+    if user_info != None:
+        hashed_pw = (user_info.values['password_hash'])
+        password = password.encode()
+        return bcrypt.checkpw(password, hashed_pw)
+    else:
+        return None #returns True or False
 
 def lookup_price(ticker):
     global API_KEY
@@ -30,6 +33,14 @@ def lookup_price(ticker):
     stem = "https://cloud.iexapis.com/stable/stock/{}/quote?token="
     response = requests.get((stem.format(ticker) + API_KEY))
     price = response.json()["latestPrice"]
+    return price
+
+def ticker_high(ticker):
+    global API_KEY
+    ticker = ticker.lower()
+    url = "https://cloud.iexapis.com/stable/stock/{}/quote?token="
+    response = requests.get((url.format(ticker) + API_KEY))
+    price = response.json()
     return price
         # CHECK THE RESPONSE STATUS CODE IF 200 ITS GOOD, ANYTHING ELSE SHOULD ALERT US
 
